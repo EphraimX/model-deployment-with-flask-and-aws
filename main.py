@@ -13,16 +13,8 @@ def question_answer(context, question):
 
   return score, answer
 
-
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST', 'GET'])
 def home():
-  return "Hi, I'm Mia, I answer questions based on a certain concept. \n \
-        You can make a POST request to the 'ask-question' endpoint and see how I work. Thank you."
-
-
-@app.route('/ask-question', methods=['POST', 'GET'])
-def ask_questions():
-
   if request.method == 'POST':
 
     data = request.json
@@ -36,7 +28,7 @@ def ask_questions():
 
     return message
   else:
-    return "This Endpoint Only Accepts GET requests"
+    return "Hi, my name is MIA, I answer questions based on contexts."
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=8000)
